@@ -31,7 +31,7 @@ sub get_tags {
 
     my $logger = get_plugin_logger();
 
-    my $title = $lrr_info->{title};
+    my $title = $lrr_info->{archive_title};
     my $tags  = $lrr_info->{existing_tags};
     if ($cleanup_title) {
         $title =~ &get_regex;

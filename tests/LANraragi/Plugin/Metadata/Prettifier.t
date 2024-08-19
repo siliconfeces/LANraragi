@@ -15,7 +15,7 @@ note("test lowercasing tags");
 {
     local *LANraragi::Plugin::Metadata::Prettifier::get_plugin_logger         = sub { return get_logger_mock(); };
 
-    my %dummyhash = ( title => "Title", existing_tags => 'TheTag');
+    my %dummyhash = ( archive_title => "Title", existing_tags => 'TheTag');
 
     my %ko_tags = LANraragi::Plugin::Metadata::Prettifier::get_tags( "", \%dummyhash, 0, 0, 1 );
     is( $ko_tags{title}, "Title",  "Title should not be touched" );
@@ -26,7 +26,7 @@ note("test cleaning up title");
 {
     local *LANraragi::Plugin::Metadata::Prettifier::get_plugin_logger         = sub { return get_logger_mock(); };
 
-    my %dummyhash = ( title => "(Release) [Artist] TITLE (Series) [Language]", existing_tags => 'TheTag');
+    my %dummyhash = ( archive_title => "(Release) [Artist] TITLE (Series) [Language]", existing_tags => 'TheTag');
 
     my %ko_tags = LANraragi::Plugin::Metadata::Prettifier::get_tags( "", \%dummyhash, 1, 0, 0 );
     is( $ko_tags{title}, "TITLE",  "Title should be extracted" );
@@ -37,7 +37,7 @@ note("test title case");
 {
     local *LANraragi::Plugin::Metadata::Prettifier::get_plugin_logger         = sub { return get_logger_mock(); };
 
-    my %dummyhash = ( title => "the black cat of ill omen", existing_tags => 'TheTag');
+    my %dummyhash = ( archive_title => "the black cat of ill omen", existing_tags => 'TheTag');
 
     my %ko_tags = LANraragi::Plugin::Metadata::Prettifier::get_tags( "", \%dummyhash, 0, 1, 0 );
     is( $ko_tags{title}, "The Black Cat of Ill Omen",  "The title didn't get title cased" );
