@@ -40,7 +40,7 @@ note("test title case");
     my %dummyhash = ( archive_title => "the black cat of ill omen. 1st isn't don't don’t. 1mm", existing_tags => 'TheTag');
 
     my %ko_tags = LANraragi::Plugin::Metadata::Prettifier::get_tags( "", \%dummyhash, 0, 1, 0 );
-    is( $ko_tags{title}, "The Black Cat of Ill Omen. 1st Isn't Don't Don’t. 1mm.",  "The title didn't get title cased" );
+    is( $ko_tags{title}, "The Black Cat of Ill Omen. 1st Isn't Don't Don’t. 1mm",  "The title didn't get title cased" );
     is( $ko_tags{tags},  "TheTag", "Tags should not be touched" );
 }
 
